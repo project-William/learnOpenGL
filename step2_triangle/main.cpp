@@ -17,6 +17,7 @@ int main() {
 
 	while (!window.Closed())
 	{
+		std::cout<<"width:"<<window.GetWidth()<<" "<<"height:"<<window.GetHeight();
 		window.ProcessInput();
 		window.Clear();
 
