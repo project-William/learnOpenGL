@@ -12,6 +12,8 @@ public:
 	bool Closed() const;
 	void Clear();
 	void ProcessInput() const;
+	inline int GetWidth() const {return m_Width;}
+	inline int GetHeight() const {return m_Height;}
 	~Window();
 private:
 	void WindowResized();
