@@ -2,24 +2,28 @@
 #include <fstream>
 #include "Ray.h"
 
-bool hit_sphere(const Vec3& center, float radius, const ray& r) {
+float hit_sphere(const Vec3& center, float radius, const ray& r) {
 	Vec3 oc = r.origin() - center;
 	float a = dot(r.direction(), r.direction());
 	float b = 2 * dot(r.direction(), oc);
 	float c = dot(oc, oc) - radius * radius;
 	float discriminant = b * b - 4 * a*c;
-	return discriminant > 0;
+	return discriminant < 0.0f ? -1.0f : (-b - sqrt(discriminant)) / (2.0f*a);
 }
 
 
 
 
 
-Vec3 color(const ray& r) {
-	if (hit_sphere(Vec3(0, 0, -1), 0.5, r))
-		return Vec3(1, 0, 0);
+Vec3 color(ray& r) {
+	float t = hit_sphere(Vec3(0.0f, 0.0f, -1.0f), 0.5, r);
+	if (t > 0.0f) {
+		Vec3 N = (r.point_on_ray(t) - Vec3(0.0f, 0.0f, -1.0f)).normalize();
+		return 0.5f*Vec3(N.get_x() + 1.0f, N.get_y() + 1.0f, N.get_z() + 1.0f);
+	}
+	//background
 	Vec3 unit_direction = r.direction().normalize();
-	float t = 0.5f*(unit_direction.get_y() + 1.0f);
+	t = 0.5f*(unit_direction.get_y() + 1.0f);
 	return (1.0f - t)*Vec3(1.0f, 1.0f, 1.0f) + t * Vec3(0.5f, 0.7f, 1.0f);
 }
 
