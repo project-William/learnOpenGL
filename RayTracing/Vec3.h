@@ -113,6 +113,7 @@ public:
 
 	friend inline Vec3 operator*(const Vec3& v, float t);
 	friend inline Vec3 operator*(float t, const Vec3& v);
+	friend inline Vec3 operator/(const Vec3& v, float t);
 
 	friend inline Vec3 operator+(const Vec3& v1, const Vec3& v2);
 	friend inline Vec3 operator-(const Vec3& v1, const Vec3& v2);
@@ -135,6 +136,11 @@ inline Vec3 operator*(float t, const Vec3& v ) {
 inline Vec3 operator*(const Vec3& v, float t) {
 	return Vec3(v.x*t, v.y*t, v.z*t);
 }
+
+inline Vec3 operator/(const Vec3& v, float t) {
+	return Vec3(v.x / t, v.y / t, v.z / t);
+}
+
 
 inline Vec3 operator-(const Vec3& v1, const Vec3& v2){
 	return Vec3(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
