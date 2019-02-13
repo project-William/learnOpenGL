@@ -1,49 +1,48 @@
-#pragma once
+#ifndef _SPHERE_H_
+#define _SPHERE_H_
+
 #include "Hitable.h"
 
-class Sphere :public Hitable {
+class Sphere:public Hitable{
 public:
+    Sphere(){}
+    Sphere(Vec3 cen,float r):center(cen),radius(r){};
+    virtual bool hit(const ray&r,float t_min,float t_max,hit_record& rec)const;
 
-	Sphere(){}
-	Sphere(Vec3 cen, float r) :center(cen), radius(r) {};
-	virtual bool hit(ray& r, float tmin, float tmax, hit_record& rec)const;
+    Vec3 center;
+    float radius;
 
-public:
-	Vec3 center;
-	float radius;
 };
 
+bool Sphere::hit(const ray& r,float t_min,float t_max,hit_record& rec)const{
+    Vec3 oc=r.origin()-center;
+    float a=dot(r.direction(),r.direction());
+    float b=2.0f*dot(oc,r.direction());
+    float c=dot(oc,oc)-radius*radius;
+    float discriminant=(b*b-4*a*c);
+    if(discriminant>0){
+        float temp=(-b-sqrt(discriminant))/(2.0f*a);
+        if(temp<t_max&&temp>t_min){
+            rec.t=temp;
+            rec.p=r.point_on_ray(rec.t);
+            rec.normal=(rec.p-center)/radius;
+            return true;
+        }
+        temp=(-b+sqrt(discriminant))/(2.0f*a);
+        if(temp<t_max&&temp>t_min){
+            rec.t=temp;
+            rec.p=r.point_on_ray(rec.t);
+            rec.normal=(rec.p-center)/radius;
+            return true;
+        }
 
-bool Sphere::hit(ray& r, float tmin, float tmax, hit_record& rec) const {
-	Vec3 oc = r.origin() - center;
-	float a = dot(r.direction(), r.direction());
-	float b = 2.0f*dot(oc, r.direction());
-	float c = dot(oc, oc) + radius * radius;
-	float discriminant = b * b - 4.0f*a*c;
-
-	if (discriminant > 0) {
-		float temp = (-b - sqrt(discriminant) / (2.0f*a));
-		if (temp<tmax&&temp>tmin) {
-			rec.t = temp;
-			rec.p = r.point_on_ray(rec.t);
-			rec.normal = (rec.p - center) / radius;
-			return true;
-		}
-		temp = (-b + sqrt(discriminant) / (2.0f*a));
-		if (temp<tmax&&temp>tmin) {
-			rec.t = temp;
-			rec.p = r.point_on_ray(rec.t);
-			rec.normal = (rec.p - center) / radius;
-			return true;
-		}
-	}
-	else {
-		return false;
-	}
-
+    }
+    return false;
 }
 
 
 
 
 
+
+#endif // _SPHERE_H_

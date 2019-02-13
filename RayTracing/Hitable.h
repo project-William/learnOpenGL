@@ -1,22 +1,20 @@
-#pragma once
-#include "Ray.h"
-
-
-//ray hit record
-struct hit_record
-{
-	//ray parameter
-	float t;
-	//hit position vector
-	Vec3 p;
-	//normal vector of hit position
-	Vec3 normal;
+#ifndef _HITABLE_H_
+#define _HITABLE_H_
+#include "ray.h"
+struct hit_record{
+    //ray
+    float t;
+    //hit point position
+    Vec3 p;
+    //normal vector of hit point
+    Vec3 normal;
 
 };
 
-class Hitable {
+
+class Hitable{
 public:
-	virtual bool hit(ray& r, float t_min, float t_max, hit_record& rec) const = 0;
+    virtual bool hit(const ray& r,float t_min,float t_max,hit_record& rec) const =0;
 };
 
 
@@ -24,4 +22,4 @@ public:
 
 
 
-
+#endif
