@@ -75,7 +75,9 @@ public:
     friend inline Vec3 operator*(float t,const Vec3& v);
     friend inline Vec3 operator*(const Vec3& v,float t);
     friend inline Vec3 operator/(const Vec3& v,float t);
-
+    
+    friend inline Vec3 normalise(const Vec3& v);
+    
     friend inline float dot(const Vec3& v1,const Vec3& v2);
     friend inline Vec3 cross(const Vec3& v1,const Vec3& v2);
 };
@@ -116,6 +118,10 @@ inline Vec3 operator/(const Vec3& v,float t){
     return Vec3(v.x/t,v.y/t,v.z/t);
 }
 
+inline Vec3 normalise(const Vec3& v){
+    float t=sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
+    return Vec3(v.x/t,v.y/t,v.z/t);   
+}
 
 inline float dot(const Vec3& v1,const Vec3& v2){
     return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z;
