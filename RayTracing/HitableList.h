@@ -1,5 +1,4 @@
-#ifndef _HITABLELIST_H_
-#define _HITABLELIST_H_
+#pragma once
 #include "Hitable.h"
 
 class HitableList:public Hitable{
@@ -8,7 +7,7 @@ public:
     HitableList(){}
     HitableList(Hitable** l,int n){list=l;list_size=n  ;}
 
-    virtual bool hit(const ray& r,float t_min,float t_max,hit_record& rec)const;
+    virtual bool hit(const Ray& r,float t_min,float t_max,hit_record& rec)const;
 
     Hitable** list;
     int list_size;
@@ -16,7 +15,7 @@ public:
 };
 
 
-bool HitableList::hit(const ray& r,float t_min,float t_max,hit_record&rec)const{
+bool HitableList::hit(const Ray& r,float t_min,float t_max,hit_record&rec)const{
     hit_record temp_rec;
     bool hit_anything=false;
     double closest_so_far=t_max;
@@ -32,7 +31,3 @@ bool HitableList::hit(const ray& r,float t_min,float t_max,hit_record&rec)const{
 }
 
 
-
-
-
-#endif // _HITABLELIST_H_

@@ -1,5 +1,4 @@
-#ifndef _HITABLE_H_
-#define _HITABLE_H_
+#pragma once
 #include "ray.h"
 struct hit_record{
     //ray
@@ -14,12 +13,7 @@ struct hit_record{
 
 class Hitable{
 public:
-    virtual bool hit(const ray& r,float t_min,float t_max,hit_record& rec) const =0;
+    virtual bool hit(const Ray& r,float t_min,float t_max,hit_record& rec) const =0;
 };
 
 
-
-
-
-
-#endif

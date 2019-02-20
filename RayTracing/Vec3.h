@@ -1,8 +1,6 @@
-#ifndef _VEC3_H_
-#define _VEC3_H_
+#pragma once
 #include <iostream>
 #include <cmath>
-
 class Vec3{
 private:
     float x,y,z;
@@ -12,9 +10,9 @@ public:
     //get and reset
     inline void reset(float re_x,float re_y,float re_z){x=re_x,y=re_y,z=re_z;}
 
-    inline float getx()const {return x;}
-    inline float gety()const {return y;}
-    inline float getz()const {return z;}
+    inline float get_x()const {return x;}
+    inline float get_y()const {return y;}
+    inline float get_z()const {return z;}
 
     inline void addx(float dx){x+=dx;}
     inline void addy(float dy){y+=dy;}
@@ -49,10 +47,10 @@ public:
             return *this;
     }
 
-    inline Vec3& operator/=(const Vec3& other){
-            x/=other.x;
-            y/=other.y;
-            z/=other.z;
+    inline Vec3& operator/=(const float t){
+            x/=t;
+            y/=t;
+            z/=t;
             return *this;
     }
 
@@ -75,9 +73,9 @@ public:
     friend inline Vec3 operator*(float t,const Vec3& v);
     friend inline Vec3 operator*(const Vec3& v,float t);
     friend inline Vec3 operator/(const Vec3& v,float t);
-    
+
     friend inline Vec3 normalise(const Vec3& v);
-    
+
     friend inline float dot(const Vec3& v1,const Vec3& v2);
     friend inline Vec3 cross(const Vec3& v1,const Vec3& v2);
 };
@@ -120,7 +118,7 @@ inline Vec3 operator/(const Vec3& v,float t){
 
 inline Vec3 normalise(const Vec3& v){
     float t=sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
-    return Vec3(v.x/t,v.y/t,v.z/t);   
+    return Vec3(v.x/t,v.y/t,v.z/t);
 }
 
 inline float dot(const Vec3& v1,const Vec3& v2){
@@ -134,10 +132,4 @@ inline Vec3 cross(const Vec3& v1,const Vec3& v2){
         v1.y*v2.z-v1.z*v2.y
     );
 }
-
-
-#endif // _VEC3_H_
-
-
-
 
