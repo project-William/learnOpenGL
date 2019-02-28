@@ -14,10 +14,10 @@ public:
 	~Window();
 	
 	inline const int& GetWidth()const { return m_Width; }
-	inline const int& GetHeight()const { return m_height; }
+	inline const int& GetHeight()const { return m_Height; }
 
 public:
-	int m_Width, m_height;
+	int m_Width, m_Height;
 	const char* m_Title;
 	GLFWwindow* m_Window;
 };

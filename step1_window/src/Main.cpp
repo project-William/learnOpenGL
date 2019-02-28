@@ -6,6 +6,7 @@ int main() {
 	Renderer render;
 	while (!window.closed())
 	{
+		std::cout << window.GetWidth() << " " << window.GetHeight() << std::endl;
 		render.clear();
 		window.update();
 	}
