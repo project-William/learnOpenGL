@@ -1,10 +1,9 @@
 #pragma once
-#include <glad/glad.h>
-#include "vertexArray.h"
-#include "Shader.h"
-#include "vertexLayout.h"
-#include "vertexBuffer.h"
 
+#include <glad/glad.h>
+#include <iostream>
+#include "VertexArray.h"
+#include "VertexBuffer.h"
 #define ASSERT(function) if(!(function)) __debugbreak();
 #define GLCall(function) GLClearError();\
 		function;\
@@ -12,14 +11,13 @@
 
 
 void GLClearError();
-bool GLLogCall(const char* function, const char* file, int line);
+bool GLLogCall(const char* function,const char* file,int line);
 
 
 class Renderer
-{
+{ 
 public:
-	void Clear()const;
-	void Draw(const vertexArray& va, const Shader& shader,
-		const vertexLayout& layout,const vertexBuffer& buffer)const;
+	void clear(float r, float g, float b, float a)const;
+	void draw(const VertexArray& va,const VertexBuffer& vb, const VertexArrayLayout& layout)const;
 };
 

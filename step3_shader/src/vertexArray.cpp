@@ -1,35 +1,35 @@
-#include "vertexArray.h"
-#include "Renderer.h"
-#include "vertexLayout.h"
+#include "VertexArray.h"
 
-vertexArray::vertexArray(){
-	GLCall(glGenVertexArrays(1, &m_RendererID));
-	GLCall(glBindVertexArray(m_RendererID));
+VertexArray::VertexArray() {
+	glGenVertexArrays(1, &m_VertexObj);
+	glBindVertexArray(m_VertexObj);
+
 }
 
-
-vertexArray::~vertexArray(){
-	GLCall(glDeleteVertexArrays(1, &m_RendererID));
+VertexArray::~VertexArray() {
+	glDeleteVertexArrays(1, &m_VertexObj);
 }
 
+void VertexArray::bind() const
+{
+	glBindVertexArray(m_VertexObj);
+}
 
-void vertexArray::addBuffer(const vertexBuffer & vb, const vertexLayout & layout){
+void VertexArray::unbind() const
+{
+	glBindVertexArray(0);
+}
+
+void VertexArray::verAttribPtr(const VertexBuffer& vb, const VertexArrayLayout& layout){
 	bind();
 	vb.bind();
-	const auto& elements = layout.GetElements();
-	unsigned int offset = 0;
-	for (unsigned int i = 0; i < elements.size(); i++) {
-		const auto& element = elements[i];
-		GLCall(glEnableVertexAttribArray(i));
-		GLCall(glVertexAttribPointer(i, element.count, element.type, element.normalize, layout.getStride(), (const void *)offset));
-		offset += element.count * VertexBufferElement::GetTypeSize(element.type);
-	}
+	const auto& elements = layout.getElements();
+	glVertexAttribPointer(index, 
+		elements[index].count, 
+		elements[index].type,
+		elements[index].normalized, 
+		layout.getStride(),
+		(const void*)(index* TypeSize(GL_FLOAT)));
+	glEnableVertexAttribArray(index);
 }
 
-void vertexArray::bind()const {
-	GLCall(glBindVertexArray(m_RendererID));
-}
-
-void vertexArray::unbind()const {
-	GLCall(glBindVertexArray(0));
-}

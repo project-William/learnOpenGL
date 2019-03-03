@@ -2,27 +2,27 @@
 #include <glad/glad.h>
 #include <string>
 #include <fstream>
-#include <sstream>
+#include <sstream>	
 #include <iostream>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-struct ShaderProgramSource{
-	std::string vertex_source;
-	std::string fragment_source;
+struct ShaderProgramSource {
+	std::string vertexSource;
+	std::string fragmentSource;
 };
 
 class Shader
 {
 private:
-	unsigned int m_RendererID;
-	std::string m_filepath;
+	std::string m_FilePath;
+	unsigned int program;
 public:
 	Shader(const std::string& filepath);
+	~Shader();
 	void bind()const;
 	void unbind()const;
-
 	void SetBool(const std::string& name, bool value) const;
 	void SetInt(const std::string& name, int value) const;
 	void SetFloat(const std::string& name, float value) const;
@@ -35,12 +35,11 @@ public:
 	void SetMat2(const std::string& name, glm::mat2& mat) const;
 	void SetMat3(const std::string& name, glm::mat3& mat) const;
 	void SetMat4(const std::string& name, glm::mat4& mat) const;
-
-	~Shader();
 private:
 	ShaderProgramSource ParseShader(const std::string& filepath);
-	unsigned int CompileShader(unsigned int type, const std::string& source);
-	unsigned int CreateProgram(const std::string& vertex_shader, const std::string& fragment_shader);
-	void checkError(const std::string& type,unsigned int shader);
+	unsigned int CreateProgram(const std::string& vertexsource, const std::string& fragmentsource);
+	unsigned int CompileShader(unsigned int type, const std::string& shadersource);
+	void checkError(unsigned int shader, const std::string& shadername)const;
+
 };
 

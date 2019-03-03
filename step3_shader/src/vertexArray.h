@@ -1,19 +1,22 @@
 #pragma once
 #include <glad/glad.h>
-#include "vertexBuffer.h"
+#include "VertexArrayLayout.h"
+#include "VertexArray.h"
+#include "VertexBuffer.h"
 
-class vertexLayout;
-
-class vertexArray
-{
+class VertexArrayLayout;
+class VertexBuffer;
+class VertexArray {
 private:
-	unsigned int m_RendererID;
+	unsigned int m_VertexObj;
+	unsigned int index = 0;
 public:
-	vertexArray();
-	~vertexArray();
+	VertexArray();
+	~VertexArray();
 
-	void addBuffer(const vertexBuffer& vb, const vertexLayout& layout);
 	void bind()const;
 	void unbind()const;
-};
 
+	unsigned int getIndex()const { return index; }
+	void verAttribPtr(const VertexBuffer& vb, const VertexArrayLayout& layout);
+};
