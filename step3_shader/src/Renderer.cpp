@@ -20,5 +20,5 @@ void Renderer::clear(float r,float g,float b,float a)const {
 }
 
 void Renderer::draw(const VertexArray& va, const VertexBuffer& vb, const VertexArrayLayout& layout) const {
-	glDrawArrays(GL_TRIANGLES, va.getIndex(), vb.getSize()/ layout.getCount());
+	GLCall(glDrawArrays(GL_TRIANGLES, va.getIndex(), vb.getSize()/ layout.getCount()));
 }

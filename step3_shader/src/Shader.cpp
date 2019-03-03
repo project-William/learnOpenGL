@@ -127,20 +127,20 @@ void Shader::checkError(unsigned int shader, const std::string & shadername) con
 	char* infoLog;
 	int length;
 	if (shadername != "program") {
-		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+		GLCall(glGetShaderiv(shader, GL_COMPILE_STATUS, &success));
 		if (!success) {
-			glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+			GLCall(glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length));
 			infoLog = (char*)malloc(length * sizeof(char));
-			glGetShaderInfoLog(shader, length, NULL, infoLog);
+			GLCall(glGetShaderInfoLog(shader, length, NULL, infoLog));
 			std::cout << "shader error:" << "(" << infoLog << ")" << std::endl;
 		}
 	}
 	else {
-		glGetProgramiv(shader, GL_LINK_STATUS, &success);
+		GLCall(glGetProgramiv(shader, GL_LINK_STATUS, &success));
 		if (!success) {
-			glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+			GLCall(glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length));
 			infoLog = (char*)malloc(length * sizeof(char));
-			glGetProgramInfoLog(shader, length, NULL, infoLog);
+			GLCall(glGetProgramInfoLog(shader, length, NULL, infoLog));
 			std::cout << "program error:" << "(" << infoLog << ")" << std::endl;
 		}
 	}
