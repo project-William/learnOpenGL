@@ -1,6 +1,7 @@
 #pragma once
-#include <glad/glad.h>
 
+#include <glad/glad.h>
+#include <iostream>
 
 #define ASSERT(function) if(!(function)) __debugbreak();
 #define GLCall(function) GLClearError();\
@@ -9,12 +10,12 @@
 
 
 void GLClearError();
-bool GLLogCall(const char* function, const char* file, int line);
+bool GLLogCall(const char* function,const char* file,int line);
 
 
 class Renderer
-{
+{ 
 public:
-	void Clear()const;
+	void clear(float r, float g, float b, float a)const;
 };
 
