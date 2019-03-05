@@ -1,29 +1,28 @@
 #pragma once
-
-#include <iostream>
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <fstream>
-#include <sstream>
 #include <string>
-
+#include <fstream>
+#include <sstream>	
+#include <iostream>
 #include <glm/glm.hpp>
-#include <cmath>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-#define MAX_VAOS 64
-#define MAX_VBOS 64
-#define MAX_EBOS 64
+struct ShaderProgramSource {
+	std::string vertexSource;
+	std::string fragmentSource;
+};
 
-class Shader {
-
+class Shader
+{
+private:
+	std::string m_FilePath;
+	unsigned int program;
 public:
-	Shader(const char*vertex_path, const char*fragment_path);
-	void Use();
-	void Draw(GLuint ordinal_num);
-	void VaoVboEbo(GLint num);
-	void RectangularSetup(GLsizeiptr size, const void* data, GLsizeiptr ele_size, const void* ele_data);
+	Shader(const std::string& filepath);
 	~Shader();
-public:
+	void bind()const;
+	void unbind()const;
 	void SetBool(const std::string& name, bool value) const;
 	void SetInt(const std::string& name, int value) const;
 	void SetFloat(const std::string& name, float value) const;
@@ -36,16 +35,11 @@ public:
 	void SetMat2(const std::string& name, glm::mat2& mat) const;
 	void SetMat3(const std::string& name, glm::mat3& mat) const;
 	void SetMat4(const std::string& name, glm::mat4& mat) const;
-	void ColorChange(const std::string& name);
-
 private:
-	void CheckError(GLint shader, const std::string& type);
-
-private:
-	const char*vertex_code, *fragment_code;
-	GLuint VAOs[MAX_VAOS];
-	GLuint VBOs[MAX_VBOS];
-	GLuint EBOs[MAX_EBOS];
-	GLint ID;
+	ShaderProgramSource ParseShader(const std::string& filepath);
+	unsigned int CreateProgram(const std::string& vertexsource, const std::string& fragmentsource);
+	unsigned int CompileShader(unsigned int type, const std::string& shadersource);
+	void checkError(unsigned int shader, const std::string& shadername)const;
 
 };
+
