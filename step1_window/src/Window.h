@@ -1,24 +1,42 @@
 #pragma once
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <string>
-#include <iostream>
 
-class Window
-{
+#define MAX_KEYS 1024
+#define MAX_BUTTONS 32
+
+class Window {
 private:
-	int m_Width, m_Height;
 	const char* m_Title;
-public:
+	int m_Width;
+	int m_Height;
 	GLFWwindow* m_Window;
-	Window(const char* title,int width,int height);
+
+	bool m_Keys[MAX_KEYS];
+	bool m_Buttons[MAX_BUTTONS];
+	double mx, my;
+
+	
+public:
+
+	Window(unsigned int width,unsigned int height,const char* title);
 	~Window();
-
-	bool closed()const;
-	void update()const;
-	friend void processInput(GLFWwindow* window);
+	void update() const;
+	bool closed() const;
+	void clear() const;
+	inline const int GetWidth()const { return m_Width; }
+	inline const int GetHeight()const { return m_Height; }
+	inline GLFWwindow* GetWinPointer() const { return m_Window; }
+	void getMousePosition(double& x, double& y) const;
+	bool isKeyPressed(unsigned int keycode) const;
+	bool isMousePressed(unsigned int button) const;
 private:
-	bool init();
-	friend void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-};
+	void init();
+	friend void windowResized(GLFWwindow* window, int width, int height);
+	friend static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	friend static void mouse_callback(GLFWwindow* window, int button, int action, int mods);
+	friend static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos);
 
+
+};
