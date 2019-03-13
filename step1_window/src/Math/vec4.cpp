@@ -75,7 +75,8 @@ namespace math {
 	}
 
 	std::ostream& operator<<(std::ostream& os, const vec4& vec) {
-		os << "vec4" << "(" << vec.x << "," << vec.y << "," << vec.z << "," << vec.w << std::endl;
+		os << "vec4" << "(" << vec.x << "," << vec.y << "," << vec.z << "," << vec.w <<")"<< std::endl;
+		return os;
 	}
 
 }

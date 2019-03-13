@@ -10,17 +10,17 @@ namespace math {
 		vec2(float xvalue, float yvalue) { x = xvalue, y = yvalue; }
 		
 		float get_x()const { return x; }
-		float get_x()const { return y; }
+		float get_y()const { return y; }
 
 		vec2& add(const vec2& other);
 		vec2& substract(const vec2& other);
 		vec2& multiply(const vec2& other);
 		vec2& divide(const vec2& other);
 
-		friend vec2 operator+(const vec2& left, const vec2& right);
-		friend vec2 operator-(const vec2& left, const vec2& right);
-		friend vec2 operator*(const vec2& left, const vec2& right);
-		friend vec2 operator/(const vec2& left, const vec2& right);
+		friend vec2 operator+(vec2& left, const vec2& right);
+		friend vec2 operator-(vec2& left, const vec2& right);
+		friend vec2 operator*(vec2& left, const vec2& right);
+		friend vec2 operator/(vec2& left, const vec2& right);
 
 		bool operator==(const vec2& other);
 		bool operator!=(const vec2& other);

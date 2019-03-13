@@ -67,6 +67,7 @@ namespace math {
 
 	std::ostream& operator<<(std::ostream& os, const vec2& vec) {
 		os << "vec2" << "(" << vec.x << "," << vec.y << ")" << std::endl;
+		return os;
 	}
 
 }
