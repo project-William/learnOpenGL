@@ -1,14 +1,16 @@
 #pragma once
 #include <glad/glad.h>
-
+#include <vector>
 
 class VertexBuffer {
 private:
-	unsigned int m_Buffer;
+	unsigned int m_Buffer[2];
 public:
 
-	VertexBuffer(unsigned int size, const void* data);
+	VertexBuffer();
 	~VertexBuffer();
-	void bind()const;
-	void unbind()const;
+	void bind(int num)const;
+	void unbind(int num)const;
+
+	void push(unsigned int size, const void* data);
 };

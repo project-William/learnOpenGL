@@ -1,15 +1,13 @@
 #include "VertexArray.h"
 
 VertexArray::VertexArray()
-	:m_VertexArray(0)
 {
-	glGenVertexArrays(1, &m_VertexArray);
-	glBindVertexArray(m_VertexArray);
+	glGenVertexArrays(2, m_VertexArray);
 }
 
 VertexArray::~VertexArray()
 {
-	glDeleteVertexArrays(1, &m_VertexArray);
+	glDeleteVertexArrays(2, m_VertexArray);
 }
 
 void VertexArray::addBuffer(const VertexLayout& layout) {
@@ -22,9 +20,9 @@ void VertexArray::addBuffer(const VertexLayout& layout) {
 	}
 }
 
-void VertexArray::bind() const
+void VertexArray::bind(int num) const
 {
-	glBindVertexArray(m_VertexArray);
+	glBindVertexArray(m_VertexArray[num]);
 }
 
 void VertexArray::unbind() const
