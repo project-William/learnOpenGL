@@ -16,9 +16,8 @@
 int main() {
 
 	Window window(1200, 800, "willaim");
-
 	Render render;
-
+	//cube with texture
 	Shader cubeShader("res/cube.shader");
 	Texture tex0("res/container2.png");
 	VertexBuffer vb;
@@ -33,6 +32,7 @@ int main() {
 	va.bind(0);
 	cubeShader.SetInt("texture0", 0);
 
+	//light cube
 	Shader lightShader("res/light.shader");
 	vb.bind(1);
 	vb.push(sizeof(light), light);
@@ -50,9 +50,9 @@ int main() {
 	{
 		//clear
 		render.clear(0.1f, 0.1f, 0.1f, 1.0f);
-		//key
+		//key callback
 		input.processInput(window.getWindow());
-		//draw cube bind texture
+		//draw cube with texture
 		cubeShader.bind();
 		Coordinate objCoord(cubeShader, window);
 		tex0.bind(0);
@@ -61,9 +61,7 @@ int main() {
 		//draw light 
 		lightShader.bind();
 		Coordinate lightCoord(lightShader, window);
-		lightCoord.objectPos(glm::vec3(1.2f, 0.4f, 0.5f));
-		lightCoord.objectVolume(glm::vec3(0.3f));
-		lightCoord.setMVP();
+		lightCoord.resetMVP(glm::vec3(1.2f, 1.0f, 0.6f), glm::vec3(0.4f));
 		va.bind(1);
 		render.draw(lightLayout);
 		//swap buffers and poll events

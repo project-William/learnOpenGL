@@ -25,15 +25,10 @@ public:
 		m_MVP = projection * view * model;
 		m_Shader.SetMat4("MVP", m_MVP);
 	}
-	glm::mat4& objectPos(const glm::vec3& pos) {
+
+	void resetMVP(const glm::vec3& pos,const glm::vec3& scale) {
 		model = glm::translate(model, pos);
-		return m_MVP;
-	}
-	glm::mat4& objectVolume(const glm::vec3& scale) {
 		model = glm::scale(model, scale);
-		return m_MVP;
-	}
-	void setMVP() {
 		m_MVP = projection * view * model;
 		m_Shader.SetMat4("MVP", m_MVP);
 	}
