@@ -15,9 +15,9 @@ public:
 		shader.SetVec3("light.position", lightPos);
 		shader.SetVec3("viewPos", window.camera->Position);
 
-		shader.SetVec3("material.ambient", 0.9f, 0.9f, 0.9f);
-		shader.SetVec3("light.ambient", 0.5f, 0.5f, 0.5f);
-		shader.SetVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+		shader.SetVec3("material.ambient", 0.5f, 0.5f, 0.5f);
+		shader.SetVec3("light.ambient", 0.4f, 0.4f, 0.4f);
+		shader.SetVec3("light.diffuse", 1.0f, 1.0f, 1.0f);
 		shader.SetVec3("light.specular", 1.0f, 1.0f, 1.0f);
 		
 		shader.SetVec3("material.specular", 0.5f, 0.5f, 0.5f);
