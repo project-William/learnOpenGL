@@ -19,14 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OriginApp.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Origin\graphics\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="OriginApp.h" />
+    <ClInclude Include="src\Origin.h" />
     <ClInclude Include="src\Origin\Core.h" />
     <ClInclude Include="src\Origin\graphics\Shader.h" />
     <ClInclude Include="src\Origin\graphics\Window.h" />
+    <ClInclude Include="src\Origin\utils\ReadFile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shader\fragmentShader.frag" />
+    <None Include="res\shader\vertexShader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -123,7 +130,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;ORIGIN_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;ORIGIN_DLL;_CRT_SECURE_NO_WARNINGS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\dev\Origin\Origin\Origin\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -157,7 +164,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;ORIGIN_DLL;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;ORIGIN_DLL;_CRT_SECURE_NO_WARNINGS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\dev\Origin\Origin\Origin\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

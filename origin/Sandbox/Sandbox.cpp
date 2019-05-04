@@ -1,17 +1,12 @@
-#include <Application.h>
-
+#include <OriginApp.h>
 
 #ifdef OG_PLATFORM_WINDOWS
 
-
 int main() {
 
-	origin::graphics::Window win(800, 600, "wew");
+	std::unique_ptr<origin::OriginApp> app(new origin::OriginApp());
 
-	while (!win.close())
-	{
-		win.update();
-	}
+	app->run();
 
 	return 0;
 }

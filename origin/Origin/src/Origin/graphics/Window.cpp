@@ -10,6 +10,7 @@ namespace origin {
 			if (!init())
 				std::cout << "Failed to initialize window!" << std::endl;
 			else std::cout << "Success!" << std::endl;
+
 		}
 
 		void Window::update()
