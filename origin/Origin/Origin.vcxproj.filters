@@ -27,7 +27,7 @@
     <ClCompile Include="src\Origin\graphics\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OriginApp.cpp">
+    <ClCompile Include="src\Origin\graphics\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,9 +45,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Origin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OriginApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -24,7 +24,7 @@ namespace origin {
 
 			void update();
 			bool close();
-
+			void clear()const { glClear(GL_COLOR_BUFFER_BIT); }
 			inline int getWidth()const { return m_WinPro.m_Width; }
 			inline int getHeight()const { return m_WinPro.m_Height; }
 			inline WindowPros getPros()const { return m_WinPro; }

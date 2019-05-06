@@ -19,12 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OriginApp.cpp" />
     <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\Origin\graphics\Shader.cpp" />
     <ClCompile Include="src\Origin\graphics\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OriginApp.h" />
     <ClInclude Include="src\Origin.h" />
     <ClInclude Include="src\Origin\Core.h" />
     <ClInclude Include="src\Origin\graphics\Shader.h" />
