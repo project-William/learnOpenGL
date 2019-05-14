@@ -2,6 +2,7 @@
 #include "graphics/Window.h"
 #include "graphics/Shader.h"
 #include "input/Input.h"
+#include "graphics/buffer/bufferLayout.h"
 
 int main()
 {
@@ -17,17 +18,18 @@ int main()
 		 0.5f,-0.5f,0.0f,
 		 0.5f, 0.5f,0.0f
 	};
+	
+	VertexBuffer vbo(sizeof(vertices),vertices);
+	VertexArray vao;
+	BufferLayout layout;
+	layout.addBuffer(vao, vbo);
 
-	GLuint vao, vbo;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	glm::mat4 model(1.0f);
+	model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	glm::mat4 model1(1.0f);
+
 
 	double xpos=0, ypos=0;
 	glm::vec2 light_pos(xpos, ypos);
@@ -45,12 +47,13 @@ int main()
 		std::cout << light_pos.x << " " << light_pos.y << std::endl;
 
 		shader.SetVec2("light_pos", light_pos);
-
+		
 		//render a rectangle
 		shader.bind();
-		glBindVertexArray(vao);
+		vao.bind();
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-		
+		glBindVertexArray(0);
+
 		//key mouse callback
 		input.pressKeys(window);
 
