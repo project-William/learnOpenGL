@@ -3,14 +3,16 @@
 #include "graphics/Shader.h"
 #include "input/Input.h"
 #include "graphics/buffer/bufferLayout.h"
-
+#include "graphics/render.h"
+#include <vector>
 int main()
 {
 	Window window(800, 800, "william");
-	Shader shader("res/Text.txt");
+	Shader shader("res/vs_fs.txt");
 	Input input;
+	Render render;
 
-	float vertices[] = {
+	std::vector<float> vertices = {
 		-0.5f,-0.5f,0.0f,
 		 0.5f,-0.5f,0.0f,
 		-0.5f, 0.5f,0.0f,
@@ -19,40 +21,30 @@ int main()
 		 0.5f, 0.5f,0.0f
 	};
 	
-	VertexBuffer vbo(sizeof(vertices),vertices);
+	VertexBuffer vbo(vertices.size(), &vertices[0], 3);
 	VertexArray vao;
 	BufferLayout layout;
-	layout.addBuffer(vao, vbo);
+	layout.addBuffer(vao, vbo, 0);
 
+	//model matrix view matrix projection matrix
+	glm::mat4 model = glm::mat4(1.0f);
+	glm::mat4 view = glm::mat4(1.0f);
+	glm::mat4 projection = glm::mat4(1.0f);
 
-	glm::mat4 model(1.0f);
-	model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
-
-	glm::mat4 model1(1.0f);
-
-
-	double xpos=0, ypos=0;
-	glm::vec2 light_pos(xpos, ypos);
+	model = glm::rotate(model, glm::radians(55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
+	projection = glm::perspective(glm::radians(45.0f), (float)window.getWidth() / window.getHeight(), 0.1f, 100.0f);
 
 	while (!window.close())
 	{
 		//clear buffer
 		window.clear();
 		glClearColor(0.0f, 0.0f, 0.05f, 0.5f);
-		//render light
-		window.getMousePos(xpos,ypos);
-		
-		light_pos.x = (xpos - window.getWidth() / 2) / window.getWidth() * 2;
-		light_pos.y = -(ypos - window.getHeight() / 2) / window.getHeight() * 2;
-		std::cout << light_pos.x << " " << light_pos.y << std::endl;
 
-		shader.SetVec2("light_pos", light_pos);
-		
 		//render a rectangle
 		shader.bind();
-		vao.bind();
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-		glBindVertexArray(0);
+
+		render.draw(vao);
 
 		//key mouse callback
 		input.pressKeys(window);

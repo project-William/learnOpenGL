@@ -8,5 +8,5 @@ public:
 	BufferLayout();
 	~BufferLayout();
 	
-	void addBuffer(VertexArray& vao,VertexBuffer& vbo)const;
+	void addBuffer(VertexArray& vao,VertexBuffer& vbo, int index)const;
 };

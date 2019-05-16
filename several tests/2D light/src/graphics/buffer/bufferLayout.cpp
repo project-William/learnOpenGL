@@ -9,9 +9,14 @@ BufferLayout::~BufferLayout() {
 
 }
 
-void BufferLayout::addBuffer(VertexArray& vao, VertexBuffer& vbo) const {
+void BufferLayout::addBuffer(VertexArray& vao, VertexBuffer& vbo, int index) const {
 	vbo.bind();
 	vao.bind();
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(index, vbo.getComponentCount(),
+		GL_FLOAT, GL_FALSE,
+		vbo.getComponentCount() * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(index);
+	
+	vao.unbind();
+	vbo.unbind();
 }
