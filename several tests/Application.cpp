@@ -8,7 +8,7 @@
 int main()
 {
 	Window window(800, 800, "william");
-	Shader shader("res/vs_fs.txt");
+	Shader shader("res/basicVertexShader.vert","res/basicFragmentShader.frag");
 	Input input;
 	Render render;
 
@@ -44,7 +44,14 @@ int main()
 		//render a rectangle
 		shader.bind();
 
+		shader.setMat4("model", model);
+		shader.setMat4("view", view);
+		shader.setMat4("projection", projection);
+		
 		render.draw(vao);
+
+
+
 
 		//key mouse callback
 		input.pressKeys(window);

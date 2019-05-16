@@ -37,10 +37,10 @@ public:
 	inline void getMousePos(double& x, double& y)const { x = m_x, y = m_y; }
 	inline void showMousePos()const { std::cout << m_x << " " << m_y << std::endl; }
 
-	friend static void windowResized(GLFWwindow* window,int width,int height);
-	friend static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-	friend static void mouseButton_callback(GLFWwindow* window, int button, int action, int mods);
-	friend static void curorPos_callback(GLFWwindow* window, double xpos, double ypos);
+	friend void windowResized(GLFWwindow* window,int width,int height);
+	friend void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	friend void mouseButton_callback(GLFWwindow* window, int button, int action, int mods);
+	friend void curorPos_callback(GLFWwindow* window, double xpos, double ypos);
 private:
 	bool init();
 
