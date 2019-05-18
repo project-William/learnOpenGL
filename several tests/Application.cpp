@@ -32,29 +32,29 @@ int main()
 	glm::mat4 projection = glm::mat4(1.0f);
 
 	model = glm::rotate(model, glm::radians(55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
 	projection = glm::perspective(glm::radians(45.0f), (float)window.getWidth() / window.getHeight(), 0.1f, 100.0f);
 
 	while (!window.close())
 	{
+		//get frame time
+		window.frameTime();
+		
+		//key mouse callback
+		input.pressKeys(window);
+
 		//clear buffer
 		window.clear();
-		glClearColor(0.0f, 0.0f, 0.05f, 0.5f);
+		glClearColor(0.0f, 0.9f, 0.05f, 0.5f);
 
 		//render a rectangle
 		shader.bind();
 
+		view = window.getCamera()->getViewMatrix();
 		shader.setMat4("model", model);
 		shader.setMat4("view", view);
 		shader.setMat4("projection", projection);
 		
 		render.draw(vao);
-
-
-
-
-		//key mouse callback
-		input.pressKeys(window);
 
 		//swap buffers poll events
 		window.update();

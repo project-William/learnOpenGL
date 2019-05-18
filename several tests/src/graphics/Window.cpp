@@ -12,6 +12,7 @@ void curorPos_callback(GLFWwindow* window, double xpos, double ypos);
 
 Window::Window(int width, int height, const char* title)
 	:m_Width(width), m_Height(height), m_Title(title)
+	, m_Camera(new Camera(glm::vec3(0.0f,0.0f,3.0f)))
 {
 	if (!init())
 		std::cout << "Failed to create window!" << std::endl;
@@ -55,7 +56,11 @@ void Window::update() {
 	glfwPollEvents();
 }
 
-
+void Window::frameTime() {
+	m_CurrentFrame = glfwGetTime();
+	m_DeltaTime = m_CurrentFrame - m_LastFrame;
+	m_LastFrame = m_CurrentFrame;
+}
 
 bool Window::init() {
 	glfwInit();
@@ -74,6 +79,8 @@ bool Window::init() {
 	glfwSetWindowSizeCallback(m_Window, windowResized);
 	glfwSetKeyCallback(m_Window, key_callback);
 	glfwSetCursorPosCallback(m_Window, curorPos_callback);
+
+	glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	if (!gladLoadGLLoader(GLADloadproc(glfwGetProcAddress))) {
 		std::cout << "Failed to initialize GLAD!" << std::endl;
@@ -105,8 +112,21 @@ void mouseButton_callback(GLFWwindow* window, int button, int action, int mods) 
 
 void curorPos_callback(GLFWwindow* window, double xpos, double ypos) {
 	Window* win = (Window*)glfwGetWindowUserPointer(window);
-	win->m_x = xpos;
-	win->m_y = ypos;
+	
+	if (win->firstMouse)
+	{
+		win->lastX = xpos;
+		win->lastY = ypos;
+		win->firstMouse = false;
+	}
+
+	float xoffset = xpos - win->lastX;
+	float yoffset = win->lastY - ypos; 
+
+	win->lastX = xpos;
+	win->lastY = ypos;
+
+	win->getCamera()->ProcessMouseMovement(xoffset, yoffset);
 }
 
 

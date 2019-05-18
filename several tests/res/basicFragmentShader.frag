@@ -6,5 +6,5 @@ uniform vec2 light_pos;
 void main()
 {
 	
-	FragColor=vec4(0.1f,0.1f,0.3f,1.0f);
+	FragColor=vec4(0.1f,0.1f,0.8f,1.0f);
 }
