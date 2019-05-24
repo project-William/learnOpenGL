@@ -134,6 +134,7 @@
     <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\graphics\Shader.h" />
     <ClInclude Include="src\graphics\Window.h" />
+    <ClInclude Include="src\math\Vec2.h" />
     <ClInclude Include="src\utils\FileUtils.h" />
     <ClInclude Include="src\utils\Input.h" />
   </ItemGroup>
