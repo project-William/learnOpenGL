@@ -134,7 +134,9 @@
     <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\graphics\Shader.h" />
     <ClInclude Include="src\graphics\Window.h" />
+    <ClInclude Include="src\math\Matrix4f.h" />
     <ClInclude Include="src\math\Vec2.h" />
+    <ClInclude Include="src\math\Vec3.h" />
     <ClInclude Include="src\utils\FileUtils.h" />
     <ClInclude Include="src\utils\Input.h" />
   </ItemGroup>
@@ -149,6 +151,11 @@
   <ItemGroup>
     <None Include="src\shader\basicFragment.frag" />
     <None Include="src\shader\basicVertex.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bg.jpeg" />
+    <Image Include="res\bird.png" />
+    <Image Include="res\pipe.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

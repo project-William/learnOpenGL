@@ -36,6 +36,12 @@
     <ClInclude Include="src\math\Vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\math\Vec3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\Matrix4f.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\graphics\Window.cpp">
@@ -60,5 +66,16 @@
   <ItemGroup>
     <None Include="src\shader\basicVertex.vert" />
     <None Include="src\shader\basicFragment.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bg.jpeg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bird.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\pipe.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

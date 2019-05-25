@@ -35,6 +35,7 @@ namespace flappy {
 					: false;
 			}
 
+
 			inline Vec2& operator+=(const Vec2& other) {
 				this->m_X += other.m_X;
 				this->m_Y += other.m_Y;

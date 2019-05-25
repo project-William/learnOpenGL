@@ -9,10 +9,35 @@ namespace flappy {
 			m_ShaderSource = getShaderSource();
 			std::cout << m_ShaderSource.vertexShader << std::endl;
 			std::cout << m_ShaderSource.fragmentShader << std::endl;
+			m_Program = createProgram();
 		}
 
-		void Shader::useProgram()const {
+		void Shader::enableProgram()const {
 			glUseProgram(m_Program);
+		}
+
+		void Shader::disableProgram()const {
+			glUseProgram(0);
+		}
+
+		void Shader::setInt(const std::string& name, int value) const {
+			glUniform1i(getLocation(name), value);
+		}
+
+		void Shader::setFloat(const std::string& name, float value) const {
+			glUniform1f(getLocation(name), value);
+		}
+
+		void Shader::setVec2(const std::string& name, math::Vec2 vec2) const {
+			glUniform2f(getLocation(name), vec2.get_x(),vec2.get_y());
+		}
+
+		void Shader::setVec3(const std::string& name, math::Vec3 vec3) const {
+			glUniform3f(getLocation(name), vec3.get_x(), vec3.get_y(), vec3.get_z());
+		}
+
+		void Shader::setMat4(const std::string& name, math::Matrix4f mat4) const {
+			glUniformMatrix4fv(getLocation(name), 1, false, &mat4[0]);
 		}
 
 		ParseShader Shader::getShaderSource() {
@@ -39,6 +64,10 @@ namespace flappy {
 			glDeleteShader(fs);
 			glLinkProgram(m_Program);
 			return m_Program;
+		}
+
+		int Shader::getLocation(const std::string& name)const {
+			return glGetUniformLocation(m_Program, name.c_str());
 		}
 
 	}
