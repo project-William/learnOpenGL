@@ -2,6 +2,7 @@
 using namespace flappy::math;
 
 int main() {
+
 	Vec2 vector( 0.0f, 1.0f);
 	Vec2 vector1(1.0f, 0.0f);
 	float f = getDegrees(vector,vector1);

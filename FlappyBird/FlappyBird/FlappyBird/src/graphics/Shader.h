@@ -16,7 +16,7 @@ namespace flappy {
 			std::string m_v_Filepath;
 			std::string m_f_Filepath;
 		public:
-			Shader() {}
+			Shader():m_Program(0) {}
 			~Shader() {}
 			Shader(const std::string& v_filepath, const std::string& f_filepath);
 			void useProgram()const;
