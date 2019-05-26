@@ -28,9 +28,8 @@ void Application::run() {
 		//draw a rectangular
 		render->renderBackground();
 		render->renderPipes();
-		index++;
 		render->renderBird(*myWindow);
-		render->update();
+		//render->update();
 
 		//swapbuffer & events
 		myWindow->udpate();
