@@ -19,7 +19,7 @@ namespace flappy {
 			Pipes();
 			void setup(math::Matrix4f& view);
 			~Pipes();
-			void use(math::Matrix4f& mat4);
+			void use();
 		
 		};
 	}

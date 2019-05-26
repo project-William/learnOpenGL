@@ -19,9 +19,12 @@ namespace flappy {
 			delete pipe_shader;
 		}
 
-	
-		void Pipes::use(math::Matrix4f& mat4) {
+		void Pipes::setup(math::Matrix4f& mat4) {
 			pipe_shader->setMat4("pipeview", mat4);
+		}
+	
+		void Pipes::use() {
+			
 			pipe_mesh->bind();
 		}
 	}

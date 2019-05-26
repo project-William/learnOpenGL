@@ -16,33 +16,27 @@ namespace flappy {
 		
 		class Render {
 		private:
-			int pipeRef = 0;
-			int mapp = 0;
-			int pipeRef1 = 0;
 		
-			//pipes
-			std::vector<Mesh*> pipes_mesh;
-			std::vector<Mesh*> pipes_mesh1;
 
-
-			//shader: background,bird,pipes
-			std::vector<Shader*> pipes_shader;
-			std::vector<Shader*> pipes_shader1;
-			int flag = 0;
 			//matrix4f
 		
 			math::Matrix4f translate = math::Matrix4f::identity();
-			//bird position
-		
+			math::Matrix4f rotate = math::Matrix4f::identity();
+			math::Matrix4f view = math::Matrix4f::identity();
 
-			double z;
+
+
+			std::vector<float> randomup;
+			std::vector<float> randombottom;
 
 
 			std::vector<Pipes*> pipes;
 
 			Background* bg;
-			Pipes* pp;
 			Bird* bird;
+
+			int ref = 0;
+
 
 		public:
 		
