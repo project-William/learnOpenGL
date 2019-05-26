@@ -1,6 +1,6 @@
 #pragma once
 #include "math/Vec3.h"
-
+#include "math/Vec4.h"
 static const int ELE_SIZE = 16;
 
 namespace flappy {
@@ -8,7 +8,7 @@ namespace flappy {
 
 		class Matrix4f {
 		private:
-			float m_Elements[ELE_SIZE];
+			float m_Elements[16];
 		public:
 			Matrix4f() {}
 			static Matrix4f identity() {
@@ -26,17 +26,19 @@ namespace flappy {
 				return m_Elements[index];
 			}
 
-			static Matrix4f orthographics(float left, float right, float top, float bottom, float near, float far) {
+			static Matrix4f orthographics(float l, float r, float t, float b, float n, float f) {
 				Matrix4f mat4 = identity();
-				mat4.m_Elements[0 + 0 * 4] = 2.0f / (left - right);
-				mat4.m_Elements[1 + 1 * 4] = 2.0f / ((top- bottom));
-				
-				mat4.m_Elements[0 + 3 * 4] = (left + right) / (left - right);
-				mat4.m_Elements[1 + 3 * 4] = (top + bottom) / (bottom - top);
-				
+				mat4.m_Elements[0 + 0 * 4] = 2.0f / (r - l);
+				mat4.m_Elements[1 + 1 * 4] = 2.0f / (t- b);
+				mat4.m_Elements[2 + 2 * 4] = 2.0f / (n - f);
+
+				mat4.m_Elements[3 + 0 * 4] = (l + r) / (l - r);
+				mat4.m_Elements[3 + 1 * 4] = (t + b) / (b - t);
+				mat4.m_Elements[3 + 2 * 4] = (f + n) / (n - f);
 				
 				return mat4;
 			}
+			
 
 			static Matrix4f translate(const Vec3& vector3f) {
 				Matrix4f mat4 = identity();
@@ -47,6 +49,7 @@ namespace flappy {
 
 				return mat4;
 			}
+
 
 			static Matrix4f rotate(float angle) {
 				Matrix4f mat4 = identity();
@@ -79,6 +82,7 @@ namespace flappy {
 			}
 			return mat4;
 		}
+
 	}
 }
 

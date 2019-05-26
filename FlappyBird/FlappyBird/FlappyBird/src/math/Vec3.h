@@ -15,7 +15,7 @@ namespace flappy {
 				this->m_Y = other.m_Y;
 				this->m_Z = other.m_Z;
 			}
-
+			Vec3(float value):m_X(value),m_Y(value),m_Z(value){}
 			Vec3(float valuex, float valuey, float valuez) :m_X(valuex), m_Y(valuey), m_Z(valuez){}
 
 			inline void reset_x(float x) { m_X = x; }

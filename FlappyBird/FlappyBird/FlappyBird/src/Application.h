@@ -7,7 +7,7 @@ class Application {
 private:
 	graphics::Window* myWindow;
 	utils::Input* input;
-	graphics::Shader* shader;
+	graphics::Render* render;
 public:
 	Application();
 	~Application();

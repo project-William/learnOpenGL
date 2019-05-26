@@ -132,30 +132,44 @@
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\EntryPoint.h" />
+    <ClInclude Include="src\graphics\Mesh.h" />
+    <ClInclude Include="src\graphics\Render.h" />
     <ClInclude Include="src\graphics\Shader.h" />
+    <ClInclude Include="src\graphics\Texture.h" />
+    <ClInclude Include="src\graphics\VertexArray.h" />
+    <ClInclude Include="src\graphics\VertexBuffer.h" />
     <ClInclude Include="src\graphics\Window.h" />
     <ClInclude Include="src\math\Matrix4f.h" />
     <ClInclude Include="src\math\Vec2.h" />
     <ClInclude Include="src\math\Vec3.h" />
+    <ClInclude Include="src\math\Vec4.h" />
     <ClInclude Include="src\utils\FileUtils.h" />
     <ClInclude Include="src\utils\Input.h" />
+    <ClInclude Include="src\vendor\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\graphics\Mesh.cpp" />
+    <ClCompile Include="src\graphics\Render.cpp" />
     <ClCompile Include="src\graphics\Shader.cpp" />
+    <ClCompile Include="src\graphics\Texture.cpp" />
+    <ClCompile Include="src\graphics\VertexArray.cpp" />
+    <ClCompile Include="src\graphics\VertexBuffer.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\utils\Input.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shader\basicFragment.frag" />
-    <None Include="src\shader\basicVertex.vert" />
+    <None Include="src\shader\backgroundFrag.frag" />
+    <None Include="src\shader\backgroundVert.vert" />
+    <None Include="src\shader\pipeFrag.frag" />
+    <None Include="src\shader\pipeVert.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\bg.jpeg" />
     <Image Include="res\bird.png" />
-    <Image Include="res\pipe.png" />
+    <Image Include="res\pipe.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

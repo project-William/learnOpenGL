@@ -2,8 +2,9 @@
 using namespace flappy::math;
 
 int main() {
-	Application app;
-	app.run();
-	
+	Application* app = new Application();
+	app->run();
+	delete app;
+
 	return 0;
 }
