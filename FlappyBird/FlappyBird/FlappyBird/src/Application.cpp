@@ -25,7 +25,7 @@ void Application::run() {
 		//clear buffer
 		myWindow->clear();
 		//draw a rectangular
-		render->render();
+		render->render(*myWindow);
 		render->update();
 
 		//swapbuffer & events

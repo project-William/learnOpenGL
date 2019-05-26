@@ -1,18 +1,24 @@
 #pragma once
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <vector>
 #include <list>
 #include "Mesh.h"
-
+#include "Window.h"
 
 namespace flappy {
 	namespace graphics {
+
+		struct BirdPosition {
+			float x, y;
+		};
+
+
 		class Render {
 		private:
 			int map = 0;
 			int xscroll = 0;
-			int pipescroll = 0;
-			int pipem = 0;
+		
 			std::vector<float> m_background = {
 				-1.0f,-1.0f,0.0f,
 				 0.0f,-1.0f,0.0f,
@@ -32,6 +38,15 @@ namespace flappy {
 				1.15f, 0.0f,0.0f,
 			};
 
+			std::vector<float> m_bird = {
+				-0.05f,-0.05f,0.0f,
+				 0.05f,-0.05f,0.0f,
+				-0.05f, 0.05f,0.0f,
+				-0.05f, 0.05f,0.0f,
+				 0.05f,-0.05f,0.0f,
+				 0.05f, 0.05f,0.0f,
+			};
+
 			std::vector<float> m_TexCoord = {
 				0.0f,0.0f,
 				1.0f,0.0f,
@@ -44,14 +59,21 @@ namespace flappy {
 			//background
 			Mesh* bg_mesh;
 			//pipes
-			Mesh* pipe_mesh;
+			//bird
+			Mesh* bird_mesh;
+
 
 			//shader: background,bird,pipes
 			Shader* bg_shader;
-			Shader* pipe_shader;
+			Shader* bird_shader;
+
 			//matrix4f
-			math::Matrix4f tran = math::Matrix4f::identity();
-			math::Matrix4f trans = math::Matrix4f::identity();
+			math::Matrix4f trans_background = math::Matrix4f::identity();
+			math::Matrix4f trans_bird = math::Matrix4f::identity();
+
+
+			//bird position
+			BirdPosition birdPos;
 		public:
 
 			Render();
@@ -61,8 +83,7 @@ namespace flappy {
 
 
 			void update();
-			void renderBackground();
-			void render();
+			void render(Window& window);
 		};
 	}
 }

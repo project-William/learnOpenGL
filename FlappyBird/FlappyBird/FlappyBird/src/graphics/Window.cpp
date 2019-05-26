@@ -38,6 +38,7 @@ namespace flappy {
 			}
 
 			glfwMakeContextCurrent(m_Window);
+			glfwSetFramebufferSizeCallback(m_Window, windowResized);
 			glfwSetWindowUserPointer(m_Window, this);
 			glfwSetWindowSizeCallback(m_Window, windowResized);
 			glfwSetKeyCallback(m_Window, key_callback);
@@ -85,7 +86,7 @@ namespace flappy {
 		void windowResized(GLFWwindow* window, int height, int width) {
 			Window* win = (Window*)glfwGetWindowUserPointer(window);
 			glfwGetFramebufferSize(win->m_Window, &win->m_Width, &win->m_Height);
-			glViewport(0, 0, width, height);
+			glViewport(0, 0, win->m_Width, win->m_Height);
 		}
 
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {

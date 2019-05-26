@@ -104,6 +104,8 @@
     <None Include="src\shader\backgroundVert.vert" />
     <None Include="src\shader\pipeVert.vert" />
     <None Include="src\shader\pipeFrag.frag" />
+    <None Include="src\shader\birdFrag.frag" />
+    <None Include="src\shader\birdVert.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\bg.jpeg">
