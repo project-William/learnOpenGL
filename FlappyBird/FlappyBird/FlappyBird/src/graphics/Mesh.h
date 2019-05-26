@@ -13,7 +13,7 @@ namespace flappy {
 		
 		class Mesh {
 		private:
-			VertexArray *vao;
+			VertexArray* vao;
 			VertexBuffer* vbo;
 			VertexBuffer* tbo;
 			Texture* tex;

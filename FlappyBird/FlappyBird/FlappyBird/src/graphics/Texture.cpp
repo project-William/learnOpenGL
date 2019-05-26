@@ -27,6 +27,9 @@ namespace flappy {
 				else if (m_Index == 1) {
 					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_TexWidth, m_TexHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_Data);
 				}
+				else if (m_Index == 2) {
+					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, m_TexWidth, m_TexHeight, 0, GL_RGB8, GL_UNSIGNED_BYTE, m_Data);
+				}
 				glGenerateMipmap(GL_TEXTURE_2D);
 			}
 			else {

@@ -91,7 +91,7 @@ namespace flappy {
 
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
 			Window* win = (Window*)glfwGetWindowUserPointer(window);
-			win->m_Keys[key] = action != GLFW_RELEASE;
+			win->m_Keys[key] = action == GLFW_PRESS ;
 		}
 
 		void mouseButton_callback(GLFWwindow* window, int button, int action, int mods) {

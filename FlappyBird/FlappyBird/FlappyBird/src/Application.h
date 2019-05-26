@@ -8,6 +8,11 @@ private:
 	graphics::Window* myWindow;
 	utils::Input* input;
 	graphics::Render* render;
+
+	float currentTime = 0.0f;
+	float lastTime = 0.0f;
+	float deltaTime = 0.0f;
+
 public:
 	Application();
 	~Application();

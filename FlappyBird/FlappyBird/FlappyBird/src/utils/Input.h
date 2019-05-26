@@ -3,9 +3,10 @@
 
 namespace flappy {
 	namespace utils {
+
 		class Input {
 		public:
-			Input(){}
+			Input() {}
 			void processInput(graphics::Window& window);
 			~Input(){}
 		};

@@ -16,8 +16,9 @@ Application::~Application() {
 
 void Application::run() {	
 
-	float time = 1000.0f;
-	int frames = 0;
+	int index=0;
+	 
+	
 	while (!myWindow->closed()) {
 		//process input
 		input->processInput(*myWindow);
@@ -25,12 +26,14 @@ void Application::run() {
 		//clear buffer
 		myWindow->clear();
 		//draw a rectangular
-		render->render(*myWindow);
+		render->renderBackground();
+		render->renderPipes();
+		index++;
+		render->renderBird(*myWindow);
 		render->update();
 
 		//swapbuffer & events
 		myWindow->udpate();
-		frames++;
 	}
 
 
