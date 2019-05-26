@@ -16,19 +16,13 @@ namespace flappy {
 		
 		class Render {
 		private:
-		
-
 			//matrix4f
-		
 			math::Matrix4f translate = math::Matrix4f::identity();
 			math::Matrix4f rotate = math::Matrix4f::identity();
 			math::Matrix4f view = math::Matrix4f::identity();
 
-
-
 			std::vector<float> randomup;
 			std::vector<float> randombottom;
-
 
 			std::vector<Pipes*> pipes;
 
@@ -36,11 +30,10 @@ namespace flappy {
 			Bird* bird;
 
 			int ref = 0;
-
+			int ref1 = 0;
+			int delay = 0;
 
 		public:
-		
-
 			Render();
 			~Render();
 			Render(const Render& other) = delete;
