@@ -32,9 +32,7 @@ namespace flappy {
 			for (int i = 0; i < pipes.size(); i++) {
 				delete pipes[i];
 			}
-			for (int i = 0; i < pipes1.size(); i++) {
-				delete pipes1[i];
-			}
+			
 		}
 
 	

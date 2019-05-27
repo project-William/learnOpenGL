@@ -27,6 +27,25 @@ namespace flappy {
 
 			Bird();
 			void use(Window& window);
+
+			Bird(const Bird& other) {
+				delete this->bird_mesh;
+				delete this->bird_shader;
+
+				bird_mesh = other.bird_mesh;
+				bird_shader = other.bird_shader;
+			}
+
+			Bird& operator=(const Bird& other) {
+				delete this->bird_mesh;
+				delete this->bird_shader;
+
+				bird_mesh = other.bird_mesh;
+				bird_shader = other.bird_shader;
+				return *this;
+			}
+
+
 			~Bird();
 
 

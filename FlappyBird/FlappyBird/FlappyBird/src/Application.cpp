@@ -14,10 +14,7 @@ Application::~Application() {
 }
 
 
-void Application::run() {	
-
-	int index=0;
-	 
+void Application::run() {		 
 	
 	while (!myWindow->closed()) {
 		//process input
@@ -29,7 +26,6 @@ void Application::run() {
 		render->renderBackground();
 		render->renderPipes();
 		render->renderBird(*myWindow);
-		//render->update();
 
 		//swapbuffer & events
 		myWindow->udpate();

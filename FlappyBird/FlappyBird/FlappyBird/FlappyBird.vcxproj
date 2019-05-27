@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\audio\Audio.h" />
     <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\graphics\Background.h" />
     <ClInclude Include="src\graphics\Bird.h" />
