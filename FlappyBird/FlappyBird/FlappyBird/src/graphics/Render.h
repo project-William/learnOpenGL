@@ -23,6 +23,9 @@ namespace flappy {
 
 			std::vector<float> randomup;
 			std::vector<float> randombottom;
+			
+			std::vector<float> randomup1;
+			std::vector<float> randombottom1;
 
 			std::vector<Pipes*> pipes;
 

@@ -20,16 +20,16 @@ namespace flappy {
 				delete this->bg_mesh;
 				delete this->bg_shader;
 
-				bg_mesh = other.bg_mesh;
-				bg_shader = other.bg_shader;
+				this->bg_mesh = other.bg_mesh;
+				this->bg_shader = other.bg_shader;
 			}
 
 			Background& operator=(const Background& other) {
 				delete this->bg_mesh;
 				delete this->bg_shader;
 
-				bg_mesh = other.bg_mesh;
-				bg_shader = other.bg_shader;
+				this->bg_mesh = other.bg_mesh;
+				this->bg_shader = other.bg_shader;
 				return *this;
 			}
 
