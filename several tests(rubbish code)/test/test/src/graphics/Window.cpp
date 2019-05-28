@@ -80,7 +80,7 @@ bool Window::init() {
 	glfwSetKeyCallback(m_Window, key_callback);
 	glfwSetCursorPosCallback(m_Window, curorPos_callback);
 
-	glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	//glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	if (!gladLoadGLLoader(GLADloadproc(glfwGetProcAddress))) {
 		std::cout << "Failed to initialize GLAD!" << std::endl;
