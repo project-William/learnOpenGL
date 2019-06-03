@@ -19,23 +19,8 @@ namespace flappy {
 			Pipes();
 			void setup(math::Matrix4f& view);
 
-			Pipes(const Pipes& other) {
-				delete this->pipe_mesh;
-				delete this->pipe_shader;
-
-				this->pipe_mesh = other.pipe_mesh;
-				this->pipe_shader = other.pipe_shader;
-			}
-
-			Pipes& operator=(const Pipes& other) {
-				delete this->pipe_mesh;
-				delete this->pipe_shader;
-
-				this->pipe_mesh = other.pipe_mesh;
-				this->pipe_shader = other.pipe_shader;
-				
-				return *this;
-			}
+			Pipes(const Pipes& other) = delete;
+			Pipes& operator=(const Pipes& other) = delete;
 
 			~Pipes();
 			void use();
