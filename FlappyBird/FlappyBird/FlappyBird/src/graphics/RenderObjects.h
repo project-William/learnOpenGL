@@ -2,6 +2,7 @@
 #include <vector>
 #include "Mesh.h"
 #include "Window.h"
+#include <memory>
 namespace flappy {
 	namespace graphics {
 

@@ -3,7 +3,7 @@
 
 namespace flappy {
 	namespace graphics {
-
+		//bird position
 		struct BirdPosition
 		{
 			float x, y;
@@ -17,7 +17,7 @@ namespace flappy {
 			BirdPosition bd_pos = {0,0};
 			int count;
 
-
+			//view rot trans matrix
 			math::Matrix4f trans_bird = math::Matrix4f::identity();
 			math::Matrix4f rot_bird = math::Matrix4f::identity();
 			math::Matrix4f view_bird = math::Matrix4f::identity();

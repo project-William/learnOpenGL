@@ -16,6 +16,7 @@ namespace flappy {
 			for (int i = 0; i < 8; i++) {
 				randomup.push_back(rand() / double(RAND_MAX));
 			}
+
 			for (int i = 0; i < 8; i++) {
 				randombottom.push_back(rand() / double(RAND_MAX));
 			}
@@ -23,6 +24,7 @@ namespace flappy {
 			for (int i = 0; i < 8; i++) {
 				randomup1.push_back(rand() / double(RAND_MAX));
 			}
+
 			for (int i = 0; i < 8; i++) {
 				randombottom1.push_back(rand() / double(RAND_MAX));
 			}

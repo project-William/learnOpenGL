@@ -4,7 +4,9 @@ namespace flappy {
 	namespace graphics {
 
 
-		Bird::Bird() {
+		Bird::Bird()
+			:bird_shader(nullptr),bird_mesh(nullptr)
+		{
 
 			bird_shader = new Shader("src/shader/birdVert.vert", "src/shader/birdFrag.frag");
 			bird_mesh = new Mesh(bird_shader, "res/bird.png", 1);

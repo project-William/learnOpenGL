@@ -25,6 +25,7 @@ namespace flappy {
 		
 			int m_Index;
 		public:
+			Mesh():vao(nullptr),vbo(nullptr),tbo(nullptr),tex(nullptr){}
 			Mesh(Shader* shader,const std::string& filepath,int index);
 			Mesh& operator=(const Mesh& other) = delete;
 			Mesh(const Mesh& other) = delete;

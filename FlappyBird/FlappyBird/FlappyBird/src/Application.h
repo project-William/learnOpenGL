@@ -2,7 +2,6 @@
 #include "EntryPoint.h"
 using namespace flappy;
 
-
 class Application {
 private:
 	graphics::Window* myWindow;

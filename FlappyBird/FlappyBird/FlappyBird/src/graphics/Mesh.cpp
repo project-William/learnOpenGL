@@ -3,7 +3,8 @@
 namespace flappy {
 	namespace graphics {
 		Mesh::Mesh(Shader* shader,const std::string& filepath, int index) 
-			:m_Filepath(filepath),m_Index(index)
+			:m_Filepath(filepath),m_Index(index),
+			vao(nullptr), vbo(nullptr), tbo(nullptr), tex(nullptr)
 		{
 		}
 
@@ -11,6 +12,7 @@ namespace flappy {
 			delete vao;
 			delete vbo;
 			delete tex;
+			delete tbo;
 		}
 
 
@@ -30,7 +32,6 @@ namespace flappy {
 			tex = new Texture(m_Filepath,m_Index);
 			texture = tex->getTexture();
 
-
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(math::Vec3), 0);
 			glEnableVertexAttribArray(0);
 
@@ -43,7 +44,6 @@ namespace flappy {
 			shader->setInt("texture1", texture);
 			shader->enableProgram();
 		}
-
 
 		void Mesh::bind() {
 			vao->bind();
