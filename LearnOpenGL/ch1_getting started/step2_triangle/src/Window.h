@@ -1,24 +1,25 @@
 #pragma once
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <string>
-#include <iostream>
 
-class Window
-{
+class Window {
 private:
 	int m_Width, m_Height;
 	const char* m_Title;
-public:
 	GLFWwindow* m_Window;
-	Window(const char* title,int width,int height);
-	~Window();
-
-	bool closed()const;
-	void update()const;
-	friend void processInput(GLFWwindow* window);
+	float m_Color[4];
+public:
+	Window(int width, int height, const char* title);
+	Window(const Window& other) = delete;
+	Window& operator=(const Window& other) = delete;
+	~Window(){}
+	inline GLFWwindow* getWindow()const { return m_Window; }
+	inline float* getColorArray() { return m_Color; }
+	bool close()const;
+	void clear();
+	void bufferUpdate()const;
 private:
 	bool init();
-	friend void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+	friend void windowResized(GLFWwindow* window, int width, int height);
 };
-
