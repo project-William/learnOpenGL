@@ -1,9 +1,9 @@
 #version 330 core
-uniform vec4 triangle_color;
+uniform vec4 rectangle_color;
 
 out vec4 fragColor;
 
 void main()
 {
-	fragColor=triangle_color;
+	fragColor=rectangle_color;
 }

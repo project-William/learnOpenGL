@@ -2,9 +2,9 @@
 
 layout(location=0) in vec3 vertexPos;
 
-uniform vec2 triangle_pos;
+uniform vec2 rectangle_pos;
 
 void main()	
 {
-	gl_Position=vec4(vertexPos.x+triangle_pos.x,vertexPos.y+triangle_pos.y,vertexPos.z,1.0f);
+	gl_Position=vec4(vertexPos.x+rectangle_pos.x,vertexPos.y+rectangle_pos.y,vertexPos.z,1.0f);
 }

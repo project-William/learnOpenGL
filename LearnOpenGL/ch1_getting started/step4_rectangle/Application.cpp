@@ -39,9 +39,9 @@ int main() {
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-	//trinagle properties
-	glm::vec4 tri_color(1.0);
-	glm::vec2 tri_pos(0.0f);
+	//rectangle properties
+	glm::vec4 rect_color(1.0);
+	glm::vec2 rect_pos(0.0f);
 
 
 	while (!window.close())
@@ -53,13 +53,13 @@ int main() {
 		ImGui::NewFrame();
 		//ImGui functions
 		ImGui::ColorEdit3("clear color", window.getColorArray());
-		//draw triangle
+		//draw rectangle
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 		shader.bind();
-		ImGui::ColorEdit4("triangle", &tri_color[0]);
-		ImGui::SliderFloat2("triangle position", &tri_pos[0], -0.5f, 0.5f, "-0.5f-0.5f", 1.0f);
-		shader.setVec2("triangle_pos", tri_pos);
-		shader.setVec4("triangle_color", tri_color);
+		ImGui::ColorEdit4("rectangle", &rect_color[0]);
+		ImGui::SliderFloat2("rectangle position", &rect_pos[0], -0.5f, 0.5f, "-0.5f-0.5f", 1.0f);
+		shader.setVec2("rectangle_pos", rect_pos);
+		shader.setVec4("rectangle_color", rect_color);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
