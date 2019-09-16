@@ -1,11 +1,11 @@
 #pragma once
 #include <glad/glad.h>	
 #include <vector>
-#include "math/Vec3.h"
-#include "math/Vec2.h"
-#include "graphics/Shader.h"
-#include "graphics/VertexArray.h"
-#include "graphics/VertexBuffer.h"
+#include "..//math/Matrix4f.h"
+#include "..//math/Vec2.h"
+#include "..//graphics/Shader.h"
+#include "..//graphics/VertexArray.h"
+#include "..//graphics/VertexBuffer.h"
 #include "Texture.h"
 
 namespace flappy {

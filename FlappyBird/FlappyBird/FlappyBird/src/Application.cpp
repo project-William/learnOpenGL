@@ -26,7 +26,6 @@ void Application::run() {
 		render->renderBackground();
 		render->renderPipes();
 		render->renderBird(*myWindow);
-
 		//swapbuffer & events
 		myWindow->udpate();
 	}

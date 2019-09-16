@@ -1,5 +1,5 @@
 #pragma once
-#include "graphics/Window.h"
+#include "..//graphics/Window.h"
 
 namespace flappy {
 	namespace utils {

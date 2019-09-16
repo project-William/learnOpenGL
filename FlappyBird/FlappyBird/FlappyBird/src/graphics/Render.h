@@ -5,7 +5,7 @@
 #include <list>
 #include "Mesh.h"
 #include "Window.h"
-#include "utils/Input.h"
+#include "..//utils/Input.h"
 #include <random>
 #include "Pipes.h"
 #include "Bird.h"

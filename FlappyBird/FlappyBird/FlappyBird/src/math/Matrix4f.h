@@ -1,6 +1,6 @@
 #pragma once
-#include "math/Vec3.h"
-#include "math/Vec4.h"
+#include "..//math/Vec3.h"
+#include "..//math/Vec4.h"
 static const int ELE_SIZE = 16;
 
 namespace flappy {

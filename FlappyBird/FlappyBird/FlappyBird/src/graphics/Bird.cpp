@@ -17,15 +17,15 @@ namespace flappy {
 
 		void Bird::use(Window& window) {
 			if (glfwGetKey(window.getWindow(), GLFW_KEY_SPACE) == GLFW_PRESS) {
-				bd_pos.y += 0.004f;
+				bd_pos.y += 0.002f;
 				count = 0;
-				rot_bird = math::Matrix4f::rotate(-35.0f);
+				rot_bird = math::Matrix4f::rotate(-5.0f);
 			}
 			else {
-				rot_bird = math::Matrix4f::rotate(count * 0.13f);
+				rot_bird = math::Matrix4f::rotate(count * 0.04f);
 			}
 			count++;
-			bd_pos.y -= (float)0.5f * powf(sqrt(count) * 0.006f, 2.1f);
+			bd_pos.y -= (float)0.05f * powf(sqrt(count) * 0.006f, 2.1f);
 			trans_bird = math::Matrix4f::translate(math::Vec3(0, bd_pos.y, 0.0f));
 			view_bird = math::multiply(trans_bird, rot_bird);
 			bird_shader->setMat4("birdview", view_bird);

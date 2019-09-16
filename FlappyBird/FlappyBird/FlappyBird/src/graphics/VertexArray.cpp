@@ -1,4 +1,4 @@
-#include "graphics/VertexArray.h"
+#include "..//graphics/VertexArray.h"
 
 namespace flappy {
 	namespace graphics {

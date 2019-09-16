@@ -1,4 +1,4 @@
-#include "graphics/VertexBuffer.h"
+#include "..//graphics/VertexBuffer.h"
 
 
 namespace flappy {

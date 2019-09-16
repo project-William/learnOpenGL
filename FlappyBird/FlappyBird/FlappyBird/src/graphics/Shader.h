@@ -1,8 +1,8 @@
 #pragma once
 #include <glad/glad.h>
-#include "utils/FileUtils.h"
-#include "math/Vec2.h"
-#include "math/Matrix4f.h"
+#include "..//utils/FileUtils.h"
+#include "..//math/Vec2.h"
+#include "..//math/Matrix4f.h"
 
 namespace flappy {
 	namespace graphics {
