@@ -1,9 +1,5 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "include/Window.h"
-#include "include/Shader.h"
-#include "include/renderer/VAOVBO/VertexArray.h"
-#include "include/renderer/VAOVBO/VertexBuffer.h"
+#include "include/renderer/RenderCube.h"
+#include "include/renderer/RenderBoard.h"
 
 
 int main()
@@ -12,28 +8,17 @@ int main()
 	Window::Create(1200, 800, "cherno");
 	auto window = Window::GetWindowInstance();
 
-	float vertices[] =
-	{
-		0.0f,0.5f,0.0f,
-		-0.5f,-0.5f,0.0f,
-		 0.5f,-0.5f,0.0f,
-	};
+	std::shared_ptr<RenderCube> cube(new RenderCube("shader/cube.vert", "shader/cube.frag"));
+	std::shared_ptr<RenderBoard> board(new RenderBoard("shader/cube.vert", "shader/cube.frag"));
 
-	
-	Shader shader("shader/cube.vert", "shader/cube.frag");
-
-	VertexBuffer vb(sizeof(vertices), vertices);
-	VertexArray va;
-	va.AttribPointer(0, 3, 12, 0);
-
+	glEnable(GL_DEPTH_TEST);
 
 	while (!window->Closed())
 	{
 		window->Clear();
 
-		va.Bind();
-		shader.UseProgram();
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		cube->Draw(window->GetWindowPros());
+		board->Draw(window->GetWindowPros());
 		
 		window->Update();
 	}
