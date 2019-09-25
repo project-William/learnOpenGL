@@ -10,7 +10,7 @@ public:
 	RenderBoard(const std::string& vfile, const std::string& ffiles);
 	~RenderBoard();
 
-	void Draw(WindowPros& windata);
+	void Draw(WindowPros& windata, std::shared_ptr<Camera> camera);
 private:
 	std::shared_ptr<Shader> m_Shader;
 	std::shared_ptr<VertexBuffer> m_VBO;

@@ -12,7 +12,7 @@ public:
 
 	~RenderCube();
 	
-	void Draw(WindowPros& windata);
+	void Draw(WindowPros& windata, std::shared_ptr<Camera> camera);
 
 private:
 	std::shared_ptr<Shader> m_Shader;

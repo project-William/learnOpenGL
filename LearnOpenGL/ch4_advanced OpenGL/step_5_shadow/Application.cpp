@@ -1,6 +1,8 @@
 #include "include/renderer/RenderCube.h"
 #include "include/renderer/RenderBoard.h"
+#include "Camera.h"
 
+void ProcessInput();
 
 int main()
 {
@@ -16,9 +18,10 @@ int main()
 	while (!window->Closed())
 	{
 		window->Clear();
+		ProcessInput();
 
-		cube->Draw(window->GetWindowPros());
-		board->Draw(window->GetWindowPros());
+		cube->Draw(window->GetWindowPros(), window->GetWindowPros().m_Camera);
+		board->Draw(window->GetWindowPros(), window->GetWindowPros().m_Camera);
 		
 		window->Update();
 	}
@@ -26,4 +29,21 @@ int main()
 	glfwTerminate();
 
 	return 0;
+}
+
+
+void ProcessInput()
+{
+	auto window = Window::GetWindowInstance();
+	if (glfwGetKey(window->GetWindowPros().m_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window->GetWindowPros().m_Window, true);
+
+	if (glfwGetKey(window->GetWindowPros().m_Window, GLFW_KEY_W) == GLFW_PRESS)
+		window->GetWindowPros().m_Camera->ProcessKeyboard(FORWARD, window->GetDeltaTime());
+	if (glfwGetKey(window->GetWindowPros().m_Window, GLFW_KEY_S) == GLFW_PRESS)
+		window->GetWindowPros().m_Camera->ProcessKeyboard(BACKWARD, window->GetDeltaTime());
+	if (glfwGetKey(window->GetWindowPros().m_Window, GLFW_KEY_A) == GLFW_PRESS)
+		window->GetWindowPros().m_Camera->ProcessKeyboard(LEFT, window->GetDeltaTime());
+	if (glfwGetKey(window->GetWindowPros().m_Window, GLFW_KEY_D) == GLFW_PRESS)
+		window->GetWindowPros().m_Camera->ProcessKeyboard(RIGHT, window->GetDeltaTime());
 }

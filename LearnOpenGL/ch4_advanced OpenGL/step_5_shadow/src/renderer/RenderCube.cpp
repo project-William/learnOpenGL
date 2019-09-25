@@ -16,14 +16,14 @@ RenderCube::~RenderCube()
 }
 
 
-void RenderCube::Draw(WindowPros& windata)
+void RenderCube::Draw(WindowPros& windata, std::shared_ptr<Camera> camera)
 {
 	m_VAO->Bind();
 	m_Shader->UseProgram();
 
 	projection = glm::perspective(glm::radians(45.0f), (float)windata.m_Width / windata.m_Height, 0.1f, 100.0f);
 	view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+	view = camera->GetViewMatrix();
 	model = glm::mat4(1.0f);
 
 	m_Shader->SetMat4("projection", projection);

@@ -16,7 +16,7 @@ void Window::Update()
 void Window::Clear()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 }
 
 
@@ -46,6 +46,9 @@ bool Window::Init(int width, int height, const char* title)
 
 	glfwMakeContextCurrent(m_WinPros.m_Window);
 	glfwSetWindowUserPointer(m_WinPros.m_Window, &m_WinPros);
+	glfwSetInputMode(m_WinPros.m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+
 	glfwSetFramebufferSizeCallback(m_WinPros.m_Window, [](GLFWwindow* window, int width, int height)
 	{
 		auto& winPros = *static_cast<WindowPros*>(glfwGetWindowUserPointer(window));
@@ -54,6 +57,30 @@ bool Window::Init(int width, int height, const char* title)
 		glViewport(0, 0, width, height);
 	});
 
+	glfwSetCursorPosCallback(m_WinPros.m_Window, [](GLFWwindow* window, double xpos, double ypos)
+	{
+		auto& winPros = *static_cast<WindowPros*>(glfwGetWindowUserPointer(window));
+		if (winPros.firstMouse)
+		{
+			winPros.lastX = xpos;
+			winPros.lastY = ypos;
+			winPros.firstMouse = false;
+		}
+
+		float xoffset = xpos - winPros.lastX;
+		float yoffset = winPros.lastY - ypos; 
+
+		winPros.lastX = xpos;
+		winPros.lastY = ypos;
+
+		winPros.m_Camera->ProcessMouseMovement(xoffset, yoffset);
+	});
+
+	glfwSetScrollCallback(m_WinPros.m_Window, [](GLFWwindow* window, double xoffset, double yoffset)
+	{
+		auto& winPros = *static_cast<WindowPros*>(glfwGetWindowUserPointer(window));
+		winPros.m_Camera->ProcessMouseScroll(yoffset);
+	});
 
 	if (!gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
 	{
@@ -77,3 +104,5 @@ Window::Window(int width, int height, const char* title)
 		std::cout << "Success" << std::endl;
 	}
 }
+
+
