@@ -34,7 +34,6 @@ class Shader
 public:
 	Shader(const std::string& vfile, const std::string& ffile);
 	~Shader();
-	void UseProgram();
 
 
 private:
@@ -44,6 +43,8 @@ private:
 	void CreateProgram(const ParseShaderSource& source);
 	GLuint CreateShader(const std::string& shadersource, GLuint type);
 public:
+	void UseProgram();
+
 	void SetBool(const std::string& name, bool value) const;
 	void SetInt(const std::string& name, int value) const;
 	void SetFloat(const std::string& name, float value) const;

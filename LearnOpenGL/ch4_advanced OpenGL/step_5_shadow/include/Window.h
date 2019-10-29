@@ -41,7 +41,7 @@ public:
 	inline int GetWinWidth()const { return m_WinPros.m_Width; }
 
 	static inline std::shared_ptr<Window>& GetWindowInstance() { return m_Instance; }
-	inline WindowPros& GetWindowPros() { return m_WinPros; }
+	WindowPros& GetWindowPros() { return m_WinPros; }
 	
 	const float GetDeltaTime()const { return m_DeltaTime; }
 
