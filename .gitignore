@@ -1,6 +1,4 @@
-#Directories
+#directories
 .vs/
-
-#files
-Debug/
-*.user
+bin/
+bin-int/

@@ -1,3 +1,0 @@
-﻿  glad.cpp
-Main.obj : error LNK2019: unresolved external symbol _glfwInit referenced in function _main
-D:\srouceCode\willToys\bin\Debug-Win32\test\test.exe : fatal error LNK1120: 1 unresolved externals
