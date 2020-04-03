@@ -24,6 +24,7 @@ namespace gltoys
 		Window& m_Window;
 		utils::Keyboard& m_Keyboard;
 		utils::Mouse& m_Mouse;
+		ui::ImGuiWin& m_GUI;
 
 		void OnEvent(events::Event& e);
 

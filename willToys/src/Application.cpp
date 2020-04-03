@@ -29,32 +29,35 @@ namespace gltoys
 		glm::mat4 view;
 		glm::mat4 model;
 
+		m_GUI.Setup();
+
+		
+
 		while (!m_Window.Closed())
 		{
 			m_Window.Clear();
 			m_Window.ClearColor();
-
+		
 			m_Camera->EnableInputEvent();
-
+		
 			m_Shader->BindShaderProgram();
 			m_Rect->BindVAO();
 			
 			projection = m_Camera->GetProjectionMatrix(45.0f);
 			view = m_Camera->GetViewMatrix();
-
 			model = glm::mat4(1.0f);
-
+		
 			m_Shader->SetMat4("projection", projection);
 			m_Shader->SetMat4("view", view);
 			m_Shader->SetMat4("model", model);
-
+		
 			m_Rect->Draw();
 			
-
-
-			
-
-
+		
+			m_GUI.Begin();
+			m_GUI.End();
+		
+		
 			m_Window.OnUpdate();
 		}
 	}
@@ -62,9 +65,10 @@ namespace gltoys
 	Application::Application()
 		:m_Window(Window::Get()),
 		m_Keyboard(utils::Keyboard::Get()),
-		m_Mouse(utils::Mouse::Get())
+		m_Mouse(utils::Mouse::Get()),
+		m_GUI(ui::ImGuiWin::Get())
 	{
-
+		
 	}
 
 

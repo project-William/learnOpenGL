@@ -108,7 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\srouceCode\willToys\willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,7 +123,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\srouceCode\willToys\willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,7 +140,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\srouceCode\willToys\willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,7 +159,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\srouceCode\willToys\willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)willToys\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -174,6 +174,10 @@
     <ClCompile Include="include\renderers\Cube.h" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\examples\CubeExample.cpp" />
+    <ClCompile Include="src\examples\SphereExample.cpp" />
+    <ClCompile Include="src\gui\ImguiSetWin.cpp" />
+    <ClCompile Include="src\gui\ImguiWin.cpp" />
     <ClCompile Include="src\OpenGL\BufferLayout.cpp" />
     <ClCompile Include="src\OpenGL\IndexBuffer.cpp" />
     <ClCompile Include="src\OpenGL\Shader.cpp" />
@@ -201,6 +205,14 @@
     <ClInclude Include="include\event\keyboardEvent.h" />
     <ClInclude Include="include\event\MouseEvent.h" />
     <ClInclude Include="include\event\WindowEvent.h" />
+    <ClInclude Include="include\examples\CubeExample.h" />
+    <ClInclude Include="include\examples\Example.h" />
+    <ClInclude Include="include\examples\Examples.h" />
+    <ClInclude Include="include\examples\RectExample.h" />
+    <ClInclude Include="include\examples\SphereExample.h" />
+    <ClInclude Include="include\examples\TriangleExample.h" />
+    <ClInclude Include="include\gui\ImguiSetWin.h" />
+    <ClInclude Include="include\gui\ImguiWin.h" />
     <ClInclude Include="include\OpenGL\BufferLayout.h" />
     <ClInclude Include="include\OpenGL\IndexBuffer.h" />
     <ClInclude Include="include\OpenGL\Shader.h" />
@@ -217,6 +229,8 @@
     <ClInclude Include="include\utils\Keyboard.h" />
     <ClInclude Include="include\utils\Mouse.h" />
     <ClInclude Include="include\Window.h" />
+    <ClInclude Include="src\examples\RectExample.cpp" />
+    <ClInclude Include="src\examples\TriangleExample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\basic.frag" />
