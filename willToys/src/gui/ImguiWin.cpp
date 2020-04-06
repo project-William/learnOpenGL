@@ -3,18 +3,7 @@
 
 namespace gltoys::ui
 {
-	ImGuiWin ImGuiWin::s_Instance;
-	bool ImGuiWin::my_tool_active = true;
 
-	void ImGuiWin::DockSpace()
-	{
-
-	}
-
-	ImGuiWin& ImGuiWin::Get()
-	{
-		return s_Instance;
-	}
 
 	void ImGuiWin::Begin()
 	{
@@ -70,11 +59,5 @@ namespace gltoys::ui
 		// Setup Platform/Renderer bindings
 		ImGui_ImplGlfw_InitForOpenGL(Window::Get().GetWinDataRef().glWindowPtr, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
-	}
-
-
-	ImGuiWin::ImGuiWin()
-	{
-		
 	}
 }

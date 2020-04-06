@@ -18,13 +18,20 @@ namespace gltoys
 		
 	private:
 		std::shared_ptr<renderer::Rectangle> m_Rect;
+		std::shared_ptr<renderer::Triangle> m_Tri;
+		std::shared_ptr<renderer::Cube> m_Cube;
+		std::shared_ptr<renderer::Sphere> m_Sphere;
 		std::shared_ptr<utils::Camera> m_Camera;
 		std::shared_ptr<opengl::Shader> m_Shader;
+		std::shared_ptr<ui::ImGuiSetWin> m_SetWin;
+
 	private:
 		Window& m_Window;
 		utils::Keyboard& m_Keyboard;
 		utils::Mouse& m_Mouse;
-		ui::ImGuiWin& m_GUI;
+
+		void setUpObjects();
+		
 
 		void OnEvent(events::Event& e);
 

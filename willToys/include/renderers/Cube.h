@@ -1,3 +1,4 @@
+#pragma once
 #include "Renderer.h"
 
 namespace gltoys::renderer
@@ -8,15 +9,15 @@ namespace gltoys::renderer
 		Cube();
 		~Cube();
 
-		std::shared_ptr<opengl::VertexArray> m_VertexArray;
-		opengl::BufferLayout m_Layout;
-
 		void BindVAO() const override;
 		void Draw() const override;
 		std::string GetRendererName() const override { return "Cube"; }
 		void SetMVP(std::function<void()> func);
 
 	private:
+		std::shared_ptr<opengl::VertexArray> m_VertexArray;
+		opengl::BufferLayout m_Layout;
+
 		std::vector<float> m_CubeData =
 		{
 			// back face

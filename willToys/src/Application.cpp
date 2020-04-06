@@ -14,23 +14,32 @@ namespace gltoys
 	void Application::RegisteEvents()
 	{
 		m_Window.SetEventCallback(BIND_EVENT(Application::OnEvent));
+	}
+
+	void Application::setUpObjects()
+	{
 		m_Camera = std::shared_ptr<utils::Camera>(new utils::Camera(glm::vec3(0.0f, 0.0f, 10.0f)));
+
+		m_Rect = std::shared_ptr<renderer::Rectangle>(new renderer::Rectangle());
+		m_Tri = std::shared_ptr<renderer::Triangle>(new renderer::Triangle());
+		m_Cube = std::shared_ptr<renderer::Cube>(new renderer::Cube());
+		m_Sphere = std::shared_ptr<renderer::Sphere>(new renderer::Sphere());
+		m_Shader = std::shared_ptr<opengl::Shader>
+			(new opengl::Shader("shaders/basic.vert", "shaders/basic.frag", opengl::ShaderType::BASIC));
+
+		m_SetWin = std::shared_ptr<ui::ImGuiSetWin>(new ui::ImGuiSetWin());
+
+		//set up imgui
+		ui::ImGuiWin::Setup();
 	}
 
 	void Application::Run()
 	{
-		
-
-		m_Rect = std::shared_ptr<renderer::Rectangle>(new renderer::Rectangle());
-		m_Shader = std::shared_ptr<opengl::Shader>
-			(new opengl::Shader("shaders/basic.vert", "shaders/basic.frag", opengl::ShaderType::BASIC));
+		setUpObjects();
 
 		glm::mat4 projection;
 		glm::mat4 view;
 		glm::mat4 model;
-
-		m_GUI.Setup();
-
 		
 
 		while (!m_Window.Closed())
@@ -40,9 +49,10 @@ namespace gltoys
 		
 			m_Camera->EnableInputEvent();
 		
+			m_Cube->BindVAO();
 			m_Shader->BindShaderProgram();
-			m_Rect->BindVAO();
-			
+
+
 			projection = m_Camera->GetProjectionMatrix(45.0f);
 			view = m_Camera->GetViewMatrix();
 			model = glm::mat4(1.0f);
@@ -51,11 +61,11 @@ namespace gltoys
 			m_Shader->SetMat4("view", view);
 			m_Shader->SetMat4("model", model);
 		
-			m_Rect->Draw();
-			
-		
-			m_GUI.Begin();
-			m_GUI.End();
+			m_Cube->Draw();
+
+			ui::ImGuiWin::Begin();
+			m_SetWin->GuiContent();
+			ui::ImGuiWin::End();
 		
 		
 			m_Window.OnUpdate();
@@ -65,8 +75,7 @@ namespace gltoys
 	Application::Application()
 		:m_Window(Window::Get()),
 		m_Keyboard(utils::Keyboard::Get()),
-		m_Mouse(utils::Mouse::Get()),
-		m_GUI(ui::ImGuiWin::Get())
+		m_Mouse(utils::Mouse::Get())
 	{
 		
 	}

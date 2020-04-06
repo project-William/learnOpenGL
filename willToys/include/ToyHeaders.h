@@ -13,6 +13,7 @@
 #include "renderers/Cube.h"
 #include "renderers/Rectangle.h"
 #include "renderers/Sphere.h"
+#include "renderers/Triangle.h"
 
 //utils
 #include "utils/FileUtils.h"
@@ -22,3 +23,4 @@
 
 //ui
 #include "gui/ImguiWin.h"
+#include "gui/ImguiSetWin.h"
